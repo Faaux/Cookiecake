@@ -437,7 +437,7 @@ function(cake_add_executable TARGET_NAME)
 
   _cake_cleanup_args(${ARGN})
 
-  cake_log("Adding executable ${_CAKE_NAME}.${TARGET_NAME}")
+  cake_log("Adding executable ${TARGET_NAME}")
 
   string(REPLACE "." ";" name_parts "${TARGET_NAME}")
 
