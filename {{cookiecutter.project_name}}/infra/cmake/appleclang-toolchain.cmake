@@ -18,8 +18,8 @@ include_guard(GLOBAL)
 
 # Prevent PATH collision with an LLVM clang installation by using the system
 # compiler shims
-set(CMAKE_C_COMPILER cc)
-set(CMAKE_CXX_COMPILER c++)
+set(CMAKE_C_COMPILER cc CACHE STRING "C-Compiler")
+set(CMAKE_CXX_COMPILER c++ CACHE STRING "C++-Compiler")
 
 if(CAKE_BUILDSYS_SANITIZER STREQUAL "MaxSan")
     set(SANITIZER_FLAGS
@@ -42,3 +42,5 @@ set(CMAKE_CXX_FLAGS_RELEASE_INIT "${RELEASE_FLAGS}")
 
 # Add this dir to the module path so that `find_package(cake-install-library)` works
 list(APPEND CMAKE_PREFIX_PATH "${CMAKE_CURRENT_LIST_DIR}")
+
+include(${CMAKE_CURRENT_LIST_DIR}/../vcpkg/vcpkg_bootstrap_toolchain.cmake)

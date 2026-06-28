@@ -17,8 +17,8 @@
 
 include_guard(GLOBAL)
 
-set(CMAKE_C_COMPILER cl)
-set(CMAKE_CXX_COMPILER cl)
+set(CMAKE_C_COMPILER cl CACHE STRING "C-Compiler")
+set(CMAKE_CXX_COMPILER cl CACHE STRING "C++-Compiler")
 
 if(CAKE_BUILDSYS_SANITIZER STREQUAL "MaxSan")
     # /Zi flag (add debug symbol) is needed when using address sanitizer
@@ -39,3 +39,5 @@ set(CMAKE_CXX_FLAGS_RELEASE_INIT "${RELEASE_FLAGS}")
 
 # Add this dir to the module path so that `find_package(cake-install-library)` works
 list(APPEND CMAKE_PREFIX_PATH "${CMAKE_CURRENT_LIST_DIR}")
+
+include(${CMAKE_CURRENT_LIST_DIR}/../vcpkg/vcpkg_bootstrap_toolchain.cmake)

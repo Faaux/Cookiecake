@@ -364,37 +364,6 @@ macro(_cake_add_common_parts TARGET_NAME)
   endif()
 
   _cake_set_project_warnings(${TARGET_NAME} False "" "" "" "")
-
-  # get_target_property(type ${TARGET_NAME} TYPE)
-  # if(${type} MATCHES ".*_LIBRARY")
-  #   configure_package_config_file(
-  #     ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/templates/Config.cmake.in
-  #     "${CMAKE_BINARY_DIR}/${TARGET_NAME}Config.cmake"
-  #     INSTALL_DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${TARGET_NAME}")
-  # endif()
-
-  # set(DEPS "")
-  # if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/Dependencies.cmake")
-  #   file(STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/Dependencies.cmake" DEPS
-  #        NEWLINE_CONSUME)
-  #   string(REPLACE "find_package" "find_dependency" DEPS "${DEPS}")
-  # endif()
-
-  # set(DEPS_REPLACEMENT
-  #     "find_dependency(cake_options REQUIRED CONFIG)\nfind_dependency(cake_warnings REQUIRED CONFIG)\n${DEPS}"
-  # )
-
-  # if(${type} MATCHES "EXECUTABLE")
-  #   if(_cake_ENABLE_TBBMALLOC)
-  #     # Linked by "_cake_add_default_settings"
-  #     set(DEPS_REPLACEMENT
-  #         "find_dependency(TBB REQUIRED CONFIG COMPONENTS tbbmalloc_proxy)\n${DEPS_REPLACEMENT}"
-  #     )
-  #   endif()
-  # endif()
-
-  # cake_package_project(TARGET ${TARGET_NAME} DEPENDENCIES "${DEPS_REPLACEMENT}")
-  # unset(DEPS)
 endmacro()
 
 #[[

@@ -7,13 +7,13 @@
       "generator": "Ninja",
       "binaryDir": "${sourceDir}/build/${presetName}",
       "cacheVariables": {
-        "CMAKE_CXX_STANDARD": "20",
+        "CMAKE_CXX_STANDARD": "{{cookiecutter.minimum_cpp_build_version}}",
         "CMAKE_CXX_EXTENSIONS": false,
         "CMAKE_CXX_STANDARD_REQUIRED": true,
         "CMAKE_EXPORT_COMPILE_COMMANDS": true,
 
-        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/infra/vcpkg/vcpkg_bootstrap_toolchain.cmake",
         "VCPKG_TARGET_TRIPLET": "x64-{{cookiecutter.project_name.replace('_', '-')}}",
+        "VCPKG_HOST_TRIPLET": "x64-{{cookiecutter.project_name.replace('_', '-')}}",
         "VCPKG_INSTALL_OPTIONS": "--no-print-usage",
         "VCPKG_OVERLAY_TRIPLETS": "${sourceDir}/triplets",
         "VCPKG_OVERLAY_PORTS": "${sourceDir}/ports"
@@ -42,7 +42,7 @@
         "_debug-base"
       ],
       "cacheVariables": {
-        "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "${sourceDir}/infra/cmake/gnu-toolchain.cmake"
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/infra/cmake/gnu-toolchain.cmake"
       }
     },
     {
@@ -53,7 +53,7 @@
         "_release-base"
       ],
       "cacheVariables": {
-        "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "${sourceDir}/infra/cmake/gnu-toolchain.cmake"
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/infra/cmake/gnu-toolchain.cmake"
       }
     },
     {
@@ -64,7 +64,7 @@
         "_debug-base"
       ],
       "cacheVariables": {
-        "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "${sourceDir}/infra/cmake/llvm-toolchain.cmake"
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/infra/cmake/llvm-toolchain.cmake"
       },
       "condition": {
         "type": "equals",
@@ -80,7 +80,7 @@
         "_release-base"
       ],
       "cacheVariables": {
-        "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "${sourceDir}/infra/cmake/llvm-toolchain.cmake"
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/infra/cmake/llvm-toolchain.cmake"
       },
       "condition": {
         "type": "equals",
@@ -96,7 +96,7 @@
         "_debug-base"
       ],
       "cacheVariables": {
-        "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "${sourceDir}/infra/cmake/appleclang-toolchain.cmake"
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/infra/cmake/appleclang-toolchain.cmake"
       },
       "condition": {
         "type": "equals",
@@ -112,7 +112,7 @@
         "_release-base"
       ],
       "cacheVariables": {
-        "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "${sourceDir}/infra/cmake/appleclang-toolchain.cmake"
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/infra/cmake/appleclang-toolchain.cmake"
       },
       "condition": {
         "type": "equals",
@@ -128,7 +128,7 @@
         "_debug-base"
       ],
       "cacheVariables": {
-        "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "${sourceDir}/infra/cmake/msvc-toolchain.cmake"
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/infra/cmake/msvc-toolchain.cmake"
       },
       "condition": {
         "type": "equals",
@@ -144,7 +144,7 @@
         "_release-base"
       ],
       "cacheVariables": {
-        "VCPKG_CHAINLOAD_TOOLCHAIN_FILE": "${sourceDir}/infra/cmake/msvc-toolchain.cmake"
+        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/infra/cmake/msvc-toolchain.cmake"
       },
       "condition": {
         "type": "equals",
